@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RedVion APK Portal | RedVion Technologies</title>
+<meta name="title" content="RedVion APK & Agame APK Download | Android Apps">
+<meta name="description" content="Download RedVion APK and Agame APK for Android. Experience AI-powered features, neon visuals, smooth gameplay, and lightweight performance. Free APK downloads from RedVion Technologies.">
+<meta name="keywords" content="RedVion APK, Agame APK, free Android APK, AI apps for Android, Android games download, neon game APK, RedVion AI, Android APK download, RedVion Technologies apps, lightweight Android game">
+<meta name="author" content="RedVion Technologies">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="RedVion APK & Agame APK Download | Android Apps">
+<meta property="og:description" content="Download RedVion APK and Agame APK — AI-powered Android apps with neon visuals, smooth gameplay, and lightweight performance. Free APKs from RedVion Technologies.">
+<meta property="og:url" content="https://redvionai-apk.000webhostapp.com/">
+<meta property="og:site_name" content="RedVion Technologies">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RedVion APK & Agame APK Download | Android Apps">
+<meta name="twitter:description" content="Get RedVion APK and Agame APK for Android. AI-powered apps with smooth gameplay and neon visuals. Free APK downloads from RedVion Technologies.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+body{margin:0;font-family:'Inter',sans-serif;background:#f8f9fa;color:#111;}
+header{display:flex;justify-content:space-between;align-items:center;background:#0b0b0b;color:white;padding:15px 30px;}
+.brand{font-weight:700;font-size:1.2rem;}
+.search-box input{padding:8px 14px;border-radius:6px;border:none;outline:none;font-size:0.9rem;}
+main{max-width:1000px;margin:40px auto;padding:0 20px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:25px;}
+.card{background:#fff;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.1);padding:20px;position:relative;}
+.card h2{margin:0 0 10px;font-size:1.5rem;color:#111;}
+.card .app-info{font-size:0.9rem;margin-bottom:10px;line-height:1.5;}
+.rating{color:#f5c518;margin-bottom:10px;cursor:pointer;font-size:1.2rem;}
+.rating span{font-size:1.2rem;margin-right:2px;}
+.description{font-size:0.95rem;color:#333;margin-bottom:25px;}
+.download-btn{display:inline-block;background:linear-gradient(90deg,#ff003c,#0066ff);color:#fff;font-weight:bold;padding:12px 25px;border-radius:35px;text-decoration:none;transition:all 0.3s ease;cursor:pointer;}
+.download-btn:hover{transform:scale(1.05);box-shadow:0 0 35px rgba(0,102,255,0.7);}
+.btn-row{margin-top:15px;display:flex;gap:10px;}
+.simple-btn{border:1px solid #ccc;background:#fff;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;transition:background 0.2s ease;}
+.simple-btn:hover{background:#eee;}
+.countdown{font-weight:bold;color:#ff003c;margin-top:10px;display:none;}
+#commentModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:10;}
+.modal-content{background:white;padding:25px;border-radius:12px;width:400px;box-shadow:0 0 20px rgba(0,0,0,0.3);}
+.modal-content h3{margin-top:0;font-size:1.2rem;font-weight:700;}
+textarea{width:100%;height:80px;border-radius:8px;padding:10px;font-size:0.9rem;border:1px solid #ccc;resize:none;margin-bottom:10px;}
+.modal-actions{text-align:right;}
+.modal-actions button{margin-left:10px;padding:8px 16px;border:none;border-radius:6px;cursor:pointer;font-weight:600;}
+#submitComment{background:#111;color:white;}
+#cancelComment{background:#eee;}
+#commentList{margin-top:15px;border-top:1px solid #ddd;padding-top:10px;}
+.comment{margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f1f1;}
+.comment small{color:#666;display:block;font-size:0.75rem;}
+.ad-slot{margin:20px 0;padding:15px;border:1px dashed #aaa;text-align:center;color:#888;}
+</style>
+</head>
+<body>
+
+<header>
+<div class="brand">RedVion Technologies</div>
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search APK..." />
+</div>
+</header>
+
+<main>
+<div class="cards" id="cardsContainer"></div>
+</main>
+
+<footer style="text-align:center;padding:20px;color:#555;">© 2025 RedVion Technologies</footer>
+
+<div id="commentModal">
+<div class="modal-content">
+<h3>Leave a Comment</h3>
+<textarea id="commentInput" placeholder="Write your comment..."></textarea>
+<div class="modal-actions">
+<button id="cancelComment">Cancel</button>
+<button id="submitComment">Post</button>
+</div>
+</div>
+</div>
+
+<script>
+const apps = [
+  {name:"Agame.apk", file:"Agame.apk", size:"954 KB", os:"Android", description:"Agame APK is an AI-powered Android game with neon visuals and fast performance."},
+  {name:"RedVion-AI.apk", file:"RedVion-AI.apk", size:"2.3 MB", os:"Android", description:"RedVion AI APK brings intelligent automation to Android devices with lightweight design."}
+];
+
+const cardsContainer=document.getElementById('cardsContainer');
+const searchInput=document.getElementById('searchInput');
+const commentModal=document.getElementById('commentModal');
+const commentInput=document.getElementById('commentInput');
+const submitComment=document.getElementById('submitComment');
+const cancelComment=document.getElementById('cancelComment');
+let currentApp=null;
+
+function renderCards(filter=""){
+  cardsContainer.innerHTML=apps.filter(a=>a.name.toLowerCase().includes(filter.toLowerCase())).map(a=>`
+    <div class="card">
+      <h2>${a.name}</h2>
+      <div class="app-info">
+        <p><strong>Publisher:</strong> RedVion Technologies</p>
+        <p><strong>Size:</strong> ${a.size}</p>
+        <p><strong>OS:</strong> ${a.os}</p>
+      </div>
+      <div class="rating" data-app="${a.name}">${renderStars(3.5)}</div>
+      <div class="description">${a.description}</div>
+      <a href="#" class="download-btn" onclick="startDownload('${a.file}', this)">Download</a>
+      <div class="countdown">Please wait <span class="timer">10</span> seconds...</div>
+      <div class="btn-row">
+        <button class="simple-btn">⭐ Rate</button>
+        <button class="simple-btn" onclick="openCommentModal('${a.name}')">💬 Comment</button>
+      </div>
+      <div class="commentList" id="comments-${a.name.replace(/\s+/g,'')}"></div>
+      <div class="ad-slot">Ad Slot - Place your ad here</div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.rating').forEach(r=>{
+    r.querySelectorAll('span').forEach((star,i)=>{
+      star.addEventListener('click',()=>{highlightStars(r,i+1);});
+      star.addEventListener('mouseover',()=>{highlightStars(r,i+1);});
+      star.addEventListener('mouseout',()=>{highlightStars(r,parseFloat(r.dataset.current||3.5));});
+    });
+  });
+
+  apps.forEach(a=>renderComments(a.name));
+}
+
+searchInput.addEventListener('input',()=>renderCards(searchInput.value));
+
+function renderStars(rating){
+  let full=Math.floor(rating),half=rating-full,empty=5-Math.ceil(rating);
+  let html='';
+  for(let i=0;i<full;i++) html+='<span>★</span>';
+  for(let i=0;i<empty;i++) html+='<span>☆</span>';
+  return html;
+}
+
+function highlightStars(container,count){
+  container.querySelectorAll('span').forEach((s,i)=>{s.textContent=i<count?'★':'☆';});
+}
+
+// Download
+function startDownload(file, btn){
+  const countdown=btn.nextElementSibling;
+  const timerEl=countdown.querySelector('.timer');
+  countdown.style.display='block';
+  btn.style.pointerEvents='none';
+  btn.textContent='Preparing...';
+  let timeLeft=10;
+  const interval=setInterval(()=>{
+    timeLeft--;
+    timerEl.textContent=timeLeft;
+    if(timeLeft<=0){
+      clearInterval(interval);
+      countdown.style.display='none';
+      btn.textContent='Downloading...';
+      window.location.href=file;
+      setTimeout(()=>{btn.textContent='Download Again';btn.style.pointerEvents='auto';},3000);
+    }
+  },1000);
+}
+
+// Comments
+function openCommentModal(appName){currentApp=appName;commentModal.style.display='flex';commentInput.value='';}
+cancelComment.onclick=()=>{commentModal.style.display='none';};
+submitComment.onclick=()=>{
+  const text=commentInput.value.trim();if(!text)return;
+  const now=new Date();
+  const comment={text,time:now.toLocaleString()};
+  const key='comments-'+currentApp.replace(/\s+/g,'');
+  let comments=JSON.parse(localStorage.getItem(key))||[];
+  comments.push(comment);
+  localStorage.setItem(key,JSON.stringify(comments));
+  renderComments(currentApp);
+  commentModal.style.display='none';
+};
+function renderComments(appName){
+  const key='comments-'+appName.replace(/\s+/g,'');
+  let comments=JSON.parse(localStorage.getItem(key))||[];
+  const listEl=document.getElementById('comments-'+appName.replace(/\s+/g,''));
+  if(listEl) listEl.innerHTML=comments.map(c=>`<div class="comment"><p>${c.text}</p><small>${c.time}</small></div>`).join('');
+}
+
+renderCards();
+</script>
+</body>
+</html>
